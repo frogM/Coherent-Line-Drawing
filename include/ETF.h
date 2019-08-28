@@ -9,6 +9,7 @@ public:
 	ETF(cv::Size);
 	void Init(cv::Size);
 	void initial_ETF(string, cv::Size);
+	void initial_ETF(cv::Mat& , cv::Size);
 	void refine_ETF(int kernel);
 	void rotateFlow(cv::Mat& src, cv::Mat& dst, float theta);
 

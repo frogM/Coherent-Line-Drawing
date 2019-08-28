@@ -9,15 +9,17 @@ INCLUDE(${wxWidgets_USE_FILE})
 INCLUDE_DIRECTORIES(${PROJECT_SOURCE_DIR}/include)
 
 ADD_EXECUTABLE(Coherent-Line-Drawing
-"${PROJECT_SOURCE_DIR}/src/main.cpp" 
+"${PROJECT_SOURCE_DIR}/src/main_consol.cpp" 
+# "${PROJECT_SOURCE_DIR}/src/dirent.c" 
 "${PROJECT_SOURCE_DIR}/src/ETF.cpp" 
-"${PROJECT_SOURCE_DIR}/src/CLD.cpp" 
+# "${PROJECT_SOURCE_DIR}/src/CLD.cpp" 
 "${PROJECT_SOURCE_DIR}/src/postProcessing.cpp" 
-"${PROJECT_SOURCE_DIR}/src/gui.cpp"  
+# "${PROJECT_SOURCE_DIR}/src/gui.cpp"  
 "${PROJECT_SOURCE_DIR}/include/ETF.h" 
-"${PROJECT_SOURCE_DIR}/include/CLD.h" 
+# "${PROJECT_SOURCE_DIR}/include/CLD.h" 
 "${PROJECT_SOURCE_DIR}/include/postProcessing.h" 
-"${PROJECT_SOURCE_DIR}/include/gui.h" 
+# "${PROJECT_SOURCE_DIR}/include/dirent.h" 
+# "${PROJECT_SOURCE_DIR}/include/gui.h" 
 )
 
 TARGET_LINK_LIBRARIES(Coherent-Line-Drawing ${OpenCV_LIBS} ${wxWidgets_LIBRARIES})

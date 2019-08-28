@@ -25,9 +25,14 @@ void ETF::Init(Size s) {
  * by taking perpendicular vectors(counter-clockwise) from gradient map
  */
 void ETF::initial_ETF(string file, Size s) {
+	Mat src = imread(file, 1);
+	initial_ETF(src, s);
+}
+
+void ETF::initial_ETF(cv::Mat& src, Size s)
+{
 	resizeMat(s);
 
-	Mat src = imread(file, 1);
 	Mat src_n;
 	Mat grad;
 	normalize(src, src_n, 0.0, 1.0, NORM_MINMAX, CV_32FC1);
@@ -45,8 +50,10 @@ void ETF::initial_ETF(string file, Size s) {
 	flowField = Mat::zeros(src.size(), CV_32FC3);
 
 #pragma omp parallel for
-	for (int i = 0; i < src.rows; i++) {
-		for (int j = 0; j < src.cols; j++) {
+	for (int i = 0; i < src.rows; i++)
+	{
+		for (int j = 0; j < src.cols; j++)
+		{
 			Vec3f u = grad_x.at<Vec3f>(i, j);
 			Vec3f v = grad_y.at<Vec3f>(i, j);
 
@@ -56,7 +63,6 @@ void ETF::initial_ETF(string file, Size s) {
 
 	rotateFlow(flowField, flowField, 90);
 }
-
 
 void ETF::refine_ETF(int kernel) {
 #pragma omp parallel for
